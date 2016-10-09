@@ -16,5 +16,6 @@
 * git再远程端改过文件要先pull下来和本地同步再传上去啊
 * 原来使用 `<a href="#jump4">  <div class="page" id="jump1">`是可以直接跳过去呐，我开始还以为要js的，孤陋寡闻啊。
 * 放一堆排列整齐的图片用li会不会好一点？
+* task2的最后那个表单希望得到指点。。。。
 
 ![Crayon Shin-chan](http://img3.duitang.com/uploads/item/201510/31/20151031104733_dxQKz.thumb.700_0.png)
