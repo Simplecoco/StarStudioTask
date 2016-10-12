@@ -47,12 +47,18 @@ label{vertical-align: 1px}
     text-decoration: none;
 }
 
+#main{
+    overflow: auto;
+    margin:0 0.5em 0 1em;
+}
+
 .page{
     background: white;
     width: auto;
-    margin: 1.2em;
+    margin: 1em 0.5em;
     box-shadow: 2px 2px 1px 1px #999999;
     padding:1.5em ;
+    overflow: auto;
 }
 
 .timeAndAuthor{
@@ -62,6 +68,7 @@ label{vertical-align: 1px}
 
 .page ul li{
     list-style: none;
+    display: inline-block;
 }
 
 #pageList div{
@@ -101,7 +108,9 @@ table th,td{
 }
 
 #sideBar{
-    overflow: hidden;
+    width: 23em;
+    float: right;
+    margin:1em 1em 0 0.5em;
 }
 
 #side{
@@ -113,8 +122,6 @@ table th,td{
 
 form{
     font-size: 14px;
-    float: left;
-    margin-left: 20%;
 }
 
 
@@ -134,13 +141,12 @@ form{
 
 .enter{
     float: left;
-    height: auto;
 }
 
 textarea{
-    float: left;
-    width: 300%;
-    height: 7em;
+
+    width: 13.5em;
+    height: 4em;
 
 }
 
