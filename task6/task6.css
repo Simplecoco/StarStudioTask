@@ -190,6 +190,10 @@ body{
     text-decoration: none;
 }
 
+#bottom{
+    clear:both;
+}
+
 #bottom_left{
     position: relative;
     float: left;
