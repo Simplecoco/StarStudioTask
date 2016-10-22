@@ -1,0 +1,658 @@
+body{
+    margin: 0;
+    color: #222222;
+    background: white;
+    font-family:Microsoft JhengHei;
+    font-size: 0.9em;
+}
+
+#headBar{
+    height: 3.8em;
+    line-height: 3.8em;
+    padding:0 4.5em;
+    clear: both;
+    overflow: auto;
+}
+
+#logo{
+    float: left;
+    height: 100%;
+    line-height:inherit;
+}
+
+#logo img{
+    vertical-align: middle;
+}
+
+#logo span{
+    font-size: 1.3em;
+    vertical-align: bottom;
+    margin-left: 0.5em;
+}
+
+#login{
+    height: 100%;
+    float: right;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+#login img{
+    vertical-align: -0.2em;
+}
+
+#login a{
+    color: rgba(231,79,77,1);
+    margin-left: 0.3em;
+    vertical-align: top;
+    font-size: 0.9em;
+}
+
+#navigationBar{
+    float: right;
+    height: 100%;
+}
+
+#navigationBar ul{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#navigationBar ul li{
+    float: left;
+    list-style: none;
+    padding:  0 1.5em;
+    height: 100%;
+}
+
+#navigationBar ul li:nth-child(1){
+    box-shadow:inset 0 -0.22em 0 0 rgba(231,79,77,1);
+    color:rgba(231,79,77,1);
+}
+
+#navigationBar ul li:hover{
+    cursor: pointer;
+    box-shadow:inset 0 -0.22em 0 0 rgba(231,79,77,1);
+    color:rgba(231,79,77,1);
+}
+
+#pic_a{
+    position: relative;
+    background: url(picture/seats.jpg);
+    height: 36.5em;
+    background-size: cover;
+}
+
+#pic_a_content{
+    position: absolute;
+    height: 18em;
+    color: white;
+    top: calc(50% - 10em);
+    left: 8em;
+}
+
+#pic_a_content p{
+    margin: 0;
+}
+
+#pic_a_content p:nth-child(1){
+    font-size: 4em;
+}
+
+#pic_a_content p:nth-child(2){
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-top: 0.6em;
+}
+
+#pic_a_content div{
+    position: relative;
+    top: 2em;
+    cursor: pointer;
+    font-size:2em;
+    width: 10em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    letter-spacing: 0.1em;
+    background:rgba(231,79,77,1);
+}
+
+#list_a{
+    display: inline-block;
+    padding: 3em 5em;
+}
+
+#list_a div{
+    height: 100%;
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+#list_a div p{
+    position: relative;
+    padding: 0 4.5em;
+    margin: 2em 0;
+}
+
+#list_a div:nth-child(-n+3) p::after{
+    float: left;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    content: "";
+    width: 0.13em;
+    height: 100%;
+    background: rgba(170,170,170,1);
+}
+
+#gray{
+    background: rgba(237,236,236,1);
+    height: auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+#gray img{
+    margin-top: 6em;
+}
+
+#gray p{
+    font-size: 3.5em;
+    color: rgba(161,161,161,1);
+}
+
+#map{
+    background: url(picture/map.jpg);
+    height: 24em;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+
+#map p{
+    margin:0 0 1.5em;
+}
+
+#map_content{
+    padding-top:3em ;
+    margin: 0 auto;
+    width: auto;
+    height: 38%;
+}
+
+#map p:nth-child(1){
+    font-size: 1.5em;
+}
+
+#map p:nth-child(1):after{
+    content: "";
+    display: block;
+    width: 1.5em;
+    height: 0.15em;
+    background: white;
+    margin: 0.2em auto;
+}
+
+#map p:nth-child(2){
+    font-size: 0.75em;
+    top: 10em;
+}
+
+#addressSearch{
+    text-align: center;
+}
+
+.address{
+    position: relative;
+    display:inline-block;
+    width: 16em;
+    height: 2.1em;
+    margin:0 2.5em 1em 0;
+    font-family: "Microsoft JhengHei";
+}
+
+.address input{
+    color: gray;
+    padding-left: 0.5em;
+    width: 100%;
+    height: 100%;
+}
+
+.triangle{
+    position: absolute;
+    cursor: pointer;
+    top: 30%;
+    right: 0;
+    width: 1.3em;
+    height: 1.25em;
+    background:rgba(190,78,72,1);
+}
+
+.address_item{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    width: calc(100% + 0.5em);
+    height: 500%;
+    background: rgba(237,236,236,1);
+    border:2px solid rgba(190,78,72,1);
+}
+
+.address_item div{
+    padding-left: 10%;
+    width: 90%;
+    text-align: left;
+    line-height: 2.1em;
+    color: gray;
+    height: 20%;
+}
+
+.address_item div:hover{
+    background:rgba(190,78,72,1);
+}
+
+.address input:hover{
+    border:2px solid rgba(190,78,72,1);
+}
+
+#search{
+    cursor: pointer;
+    width: 104%;
+    height: 120%;
+    line-height:2.1em;
+    position: relative;
+    font-size: 1.1em;
+    letter-spacing: 1.2em;
+    text-align: center;
+    text-indent: 1.2em;
+    display: inline-block;
+    background:rgba(190,78,72,1);
+}
+
+#gallery{
+    padding: 6em 6em 8em;
+    height: auto;
+    background: rgba(247,247,247,1);
+    text-align: center;
+}
+
+.painting{
+    display: inline-block;
+    width: 19%;
+    margin:0 1em;
+}
+
+.painting h2{
+    margin: 0;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.painting span{
+    font-size: 0.8em;
+    line-height: 1em;
+    color: rgba(140,140,140,1);
+}
+
+.painting:nth-child(2){
+    text-align: center;
+}
+
+.painting:nth-child(2) h2{
+    font-size: 1.5em;
+    margin: 0;
+    white-space: nowrap;
+    letter-spacing: 1.25em;
+    text-align: center;
+    text-indent: 1.25em;
+}
+
+.painting .frame{
+    margin: 0.3em 0 0.5em 0;
+}
+
+.frame{
+    display: inline-block;
+    border:1px solid rgba(206,206,206,1);
+    background: white;
+    padding: 0.5em;
+    overflow: hidden;
+    text-align: center;
+}
+
+@media screen and (min-width:1168px){
+    .hiddenMin{
+        display: none;
+    }
+}
+
+@media screen and (max-width:1168px){
+    .hiddenMax{
+        display: none;
+    }
+}
+
+#time{
+    height: auto;
+}
+
+#time_top{
+    position: relative;
+    height: 40em;
+}
+
+#pants{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 66%;
+    background: url(picture/pants.jpg);
+    background-size: cover;
+}
+
+#newWorld{
+    position: absolute;
+    left: 66%;
+    height: 40em;
+    width: 34%;
+    background: white;
+    text-align: center;
+}
+
+#pants_content{
+    padding-top: 8em;
+}
+
+#pants_content p{
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+    color: white;
+}
+
+#pants_content p:nth-child(1){
+    font-size: 3em;
+    position: relative;
+    top:1.2em;
+}
+
+#pants_content p:nth-child(2){
+    font-size: 12em;
+}
+
+#newWorld_content{
+    margin-top:30%;
+    position: absolute;
+}
+
+#newWorld_content span{
+    color: rgba(231,79,77,1);
+}
+
+#newWorld_content p{
+    text-align: left;
+    width: 72%;
+    margin: 0 auto 10%;
+    font-size: 0.8em;
+    color: rgba(176,176,176,1);
+    line-height: 3em;
+}
+
+.more{
+    cursor: pointer;
+    margin: 0 auto 4%;
+    line-height: 2.4em;
+    width: 8em;
+    height: 2.5em;
+    color: rgba(228,102,106,1);
+    border: 1px solid rgba(228,102,106,1);
+    text-align: center;
+}
+
+.round{
+    height: 0.7em;
+    width: 0.7em;
+    border-radius:50%;
+    border: 1px solid rgba(146,146,146,1);
+    display: inline-block;
+    margin: 0 0.5em;
+}
+
+.round:hover{
+    background:rgba(146,146,146,1);
+}
+
+#time_bottom{
+    height: 28em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#ntRed{
+    position: absolute;
+    height: 28em;
+    width: 33%;
+    left: 0;
+    background: rgba(231,80,77,1);
+    color: white;
+}
+
+#time_bottom p{
+    margin: 0;
+}
+
+#ntRed p:first-child{
+    margin: 10em 0 0;
+}
+
+#ntRed .more{
+    border: 1px solid white;
+    color: white;
+}
+
+
+#ntWhite{
+    position: absolute;
+    height: 28em;
+    width: 33%;
+    left:33%;
+    background: white;
+}
+
+#ntWhite p:first-child{
+    margin: 10em 0 0;
+}
+
+.line{
+    margin: 1.2em auto 1.2em;
+    height: 0.1em;
+    width: 1.5em;
+    background:rgba(146,146,146,1);
+}
+
+#train{
+    position: absolute;
+    width: 34%;
+    right: 0;
+    background:url(picture/train.jpg);
+    background-size: cover;
+    height: 28em;
+}
+
+#join{
+    display: inline-block;
+    width: 84%;
+    padding:8%;
+    text-align: center;
+    clear: both;
+}
+
+#join h3{
+    margin: 0;
+}
+
+#join .line{
+    background: rgba(234,102,99,1);
+    margin-top: 0.3em;
+    margin-bottom: 0;
+    width: 1.8em;
+}
+
+#join p{
+    color: rgba(170,170,170,1);
+    text-align: center;
+    font-size: 0.9em;
+    margin-bottom: 10%;
+}
+
+#instruction{
+    width: 25%;
+    margin-right: 5%;
+    float: left;
+    left: 0;
+}
+
+#instruction p{
+    margin-bottom:6%;
+    text-align: left;
+}
+
+#instruction h4{
+    text-align: left;
+    margin:0;
+}
+
+#instruction span{
+    text-align: right;
+    display: block;
+    font-size: 0.7em;
+    cursor: pointer;
+    margin-top: 0.5em;
+    color:rgba(120,120,120,1);
+}
+
+form{
+    float: left;
+    height: 100%;
+    width:70% ;
+}
+
+form input,textarea{
+    display: block;
+    float: left;
+    padding: 1.5%;
+    height: 1.5em;
+    width: 44%;
+    border: none;
+    background: rgba(237,237,238,1);
+    border-radius: 2px;
+    margin:0 3% 2.5% 0;
+    color:gray;
+}
+
+form textarea{
+    resize: none;
+    width: 94%;
+    height: 7em;
+    text-align: start;
+}
+
+form div{
+    cursor: pointer;
+    line-height: 2.5em;
+    float: left;
+    width: 97%;
+    height: 2.5em;
+    background: rgba(237,237,238,1) ;
+}
+
+#contact{
+    height: 20em;
+    background: rgba(50,53,62,1);
+    color: white;
+    text-align: center;
+    padding: 5% 0 1%;
+}
+
+#contact h2{
+    margin-bottom: 0.4em;
+}
+
+#contact p{
+    font-size: 0.9em;
+    font-family: KaiTi;
+    margin-top: 0;
+}
+
+#contact input{
+    display: block;
+    padding: 0.5%;
+    height: 100%;
+    border: none;
+}
+
+#contact input{
+    float: left;
+}
+
+#contact input:nth-child(1){
+    width: 80%;
+}
+
+#contact input:nth-child(2){
+    cursor: pointer;
+    width: 16%;
+    height: 115%;
+    color: white;
+    background: rgba(111,113,120,1);
+    font-family: "Microsoft JhengHei";
+    letter-spacing: 1em;
+    text-indent: 0.8em;
+    font-size: 1.2em;
+}
+
+#mailBox{
+    display: inline-block;
+    width: 40%;
+    height: 2.4em;
+    margin:2em 0 3em;
+}
+
+#contact img{
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 2%;
+}
+
+#tailBar{
+    clear: both;
+    height: 5em;
+    background: rgba(47,47,56,1);
+    padding: 0 3%;
+    font-size: 0.8em;
+    font-family: SimSun;
+    color: white;
+    line-height: 5em;
+}
+
+#tailBar div:first-child{
+    float: left;
+}
+
+#tailBar div:last-child{
+    float: right;
+    cursor: pointer;
+}
+
+#tailBar a{
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+

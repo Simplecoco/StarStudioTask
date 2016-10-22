@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="task7.css" rel="stylesheet" type="text/css">
+</head>
+<body onclick="disappear(event)">
+<div id="headBar">
+    <div id="logo"><img src="picture/book_s.png"><span>新世界</span></div>
+    <div id="login"><img src="picture/user.png"/><a>登录</a></div>
+    <div id="navigationBar">
+        <ul>
+            <li>首页</li>
+            <li>最新活动</li>
+            <li>项目介绍</li>
+            <li>爱心社区</li>
+            <li>关于我们</li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="main">
+
+<div id="pic_a">
+    <div id="pic_a_content">
+        <p>Time of new life</p>
+        <p>新时代，年轻的人们让我们一起<br>体验新生活，享受新生活</p>
+        <div>开始体验</div>
+    </div>
+</div>
+
+    <div id="list_a">
+        <div><img src="picture/ringthree.png"><p>打造全新世界观，让你更爱你的生活</p></div>
+        <div><img src="picture/flag.png"><p>丰富多彩的公益活动，发挥新世界的主人公意识</p></div>
+        <div><img src="picture/flower.png"><p>时尚的新理念，超前体验未知的生活</p></div>
+        <div><img src="picture/boxfour.png"><p>完善的培养机制，培养你的全新世界观</p></div>
+    </div>
+
+    <div id="gray">
+        <img src="picture/book_l.png">
+        <p>关于新世界，你不知道的还有什么?</p>
+    </div>
+
+    <div id="map" onclick="disappear()">
+            <div id="map_content">
+            <p>查找新世界城市活动信息</p>
+            <p>每个城市有不同的活动信息，请自主查询你所需要了解的城市</p>
+            </div>
+        <div id="addressSearch">
+        <div class="address">
+            <input type="text">
+            <div class="triangle" onclick="appear(event)">﹀</div>
+            <div class="address_item">
+                <div onclick="select(event)">中国</div>
+                <div onclick="select(event)">美国</div>
+                <div onclick="select(event)">日本</div>
+                <div onclick="select(event)">澳大利亚</div>
+                <div onclick="select(event)">加拿大</div>
+            </div>
+        </div>
+            <div class="address">
+                <input type="text">
+                <div class="triangle" onclick="appear(event)">﹀</div>
+                <div class="address_item">
+                    <div onclick="select(event)">北京市</div>
+                    <div onclick="select(event)">天津市</div>
+                    <div onclick="select(event)">河北省</div>
+                    <div onclick="select(event)">四川省</div>
+                    <div onclick="select(event)">云南省</div>
+                </div>
+            </div>
+            <div class="address">
+                <input type="text">
+                <div class="triangle" onclick="appear(event)">﹀</div>
+                <div class="address_item">
+                    <div onclick="select(event)">北京</div>
+                    <div onclick="select(event)">天津</div>
+                    <div onclick="select(event)">石家庄</div>
+                    <div onclick="select(event)">成都</div>
+                    <div onclick="select(event)">昆明</div>
+                </div>
+            </div>
+        <div class="address"><div id="search">搜索</div></div>
+        </div>
+    </div>
+
+    <div id="gallery">
+        <div class="painting"><div class="frame"><h2 class="hiddenMin">北京活动</h2><span class="hiddenMin">新社区大联盟</span><img src="picture/pic_a.jpg"></div><h2 class="hiddenMax">北京活动</h2><span class="hiddenMax">新社区大联盟</span></div>
+        <div class="painting"><h2 class="hiddenMax">上海活动</h2><span class="hiddenMax">夜上海新景观探索</span><div class="frame"><h2 class="hiddenMin">上海活动</h2><span class="hiddenMin">夜上海新景观探索</span><img src="picture/pic_b.jpg"></div></div>
+        <div class="painting"><div class="frame"><h2 class="hiddenMin">深圳活动</h2><span class="hiddenMin">全新海岸线观点站</span><img src="picture/pic_c.jpg"></div><h2 class="hiddenMax">深圳活动</h2><span class="hiddenMax">全新海岸线观点站</span></div>
+        <div class="painting"><div class="frame"><h2 class="hiddenMin">香港活动</h2><span class="hiddenMin">奢侈消费大派送</span><img src="picture/pic_d.jpg"></div><h2 class="hiddenMax">香港活动</h2><span class="hiddenMax">奢侈消费大派送</span></div>
+
+    </div>
+<div id="time">
+    <div id="time_top">
+        <div id="pants">
+            <div id="pants_content">
+                <p>新世界</p>
+                <p>TIME</p>
+                <p>@新世界-北京</p>
+                <p>2016.04.01</p>
+            </div>
+        </div>
+        <div id="newWorld">
+                <div id="newWorld_content">
+            <h2>新世界 / <span>01</span></h2>
+            <p>新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界是个新世界新世界新世界是个新世界新世界是个新世界</p>
+            <div class="more">更多详情</div>
+            <div class="round"></div><div class="round"></div><div class="round"></div>
+                </div>
+        </div>
+    </div>
+    <div id="time_bottom">
+        <div id="ntRed"><p>新时代</p><p>关于爱生活的我们</p><div class="line"></div><div class="more">查看更多</div></div>
+        <div id="ntWhite"><p>新时代</p><p>关于爱生活的我们</p><div class="line"></div><div class="more">查看更多</div></div>
+        <div id="train"></div>
+    </div>
+</div>
+
+    <div id="join">
+        <h3>成为我们的志愿者</h3>
+        <div class="line"></div>
+        <p>新世界的大家庭需要每一个爱生活的人加入，如果你年轻，有梦想，有激情<br>那就不要犹豫，快来加入我们，成为改变所有人生活的人</p>
+
+        <div id="instruction">
+            <h4>新世界志愿者协议</h4>
+            <p>加入新世界志愿者的人员必须遵守中华人民共和国的相关法律规定，并且本着平等平等资源的原则......<span>﹀more</span></p>
+            <h4>新世界志愿者权利</h4>
+            <p>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格<span>﹀more</span></p>
+            <h4>更多条款</h4><span>﹀more</span>
+        </div>
+        <form>
+            <input placeholder="姓名：">
+            <input placeholder="年龄：">
+            <input placeholder="联系方式：">
+            <input placeholder="联系地址" >
+            <textarea placeholder="请简单描述您梦想的生活："></textarea>
+            <div>提交申请</div>
+        </form>
+    </div>
+
+    <div id="contact">
+            <div id="contact_content">
+        <h2>联系我们</h2>
+        <p>为了更好的获取我们最新的产品资讯，您可以留下您的电子邮箱快速订阅我们的产品资讯<br>也可以通过以下任何方式关注我们的动态</p>
+                <div id="mailBox"><input placeholder="someone@email.com"><input type="submit" value="提交"></div>
+                <div id="share">
+                <img src="picture/QQ.png">
+                <img src="picture/weibo.png">
+                <img src="picture/twitter.png">
+                <img src="picture/global.png">
+                </div>
+            </div>
+    </div>
+
+</div>
+
+
+<div id="tailBar">
+    <div>@2016新世界</div>
+    <div><a href="#headBar">Back to top</a></div>
+</div>
+<script src="task7.js" language="JavaScript" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
