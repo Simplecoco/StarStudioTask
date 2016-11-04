@@ -40,7 +40,7 @@ sortBtn.onclick=function() {
         for (var i = 0; i < printData.length; i++) {
             var spanNode = document.createElement("li");
             spanNode.style.listStyle = "none";
-            spanNode.innerHTML = "第" + (i + 1) + "名:" + orderData[i][0] + "&nbsp" + "<b>"+orderData[i][1]+"</b>";
+            spanNode.innerHTML = "第" + (i + 1) + "名:" + orderData[i][0] + ": " + "<b>"+orderData[i][1]+"</b>";
             console.log(spanNode);
             fragment.appendChild(spanNode);
         }
