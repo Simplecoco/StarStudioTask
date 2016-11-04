@@ -18,8 +18,8 @@ console.log(orderData);
 
 function orderAndFilter(usualData,min){           //过滤小于60的数据，并用其数据排序
     console.log(usualData);
-    var eligibleData=new Array();
-    var orderData=new Array();
+    var eligibleData=[];
+    var orderData=[];
     for(var i=1;i<usualData.length;i++){
         if(usualData[i][1]>min){
             eligibleData[eligibleData.length]=usualData[i];
@@ -27,11 +27,7 @@ function orderAndFilter(usualData,min){           //过滤小于60的数据，�
     }
     console.log(eligibleData);
     orderData=eligibleData.sort(function(a,b){
-        var x=a[1];
-        var y=b[1];
-        console.log(a,b);
-        console.log(x,y);
-        return y-x;
+        return b[1] - a[1];
     });
     console.log(orderData);
     return orderData;
