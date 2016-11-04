@@ -10,8 +10,9 @@ var aqiData = [
     ["西安", 100]
 ];
 
+var aqiList=document.getElementById("aqi-list");
 var orderData=orderAndFilter(aqiData,60);
-print(orderData);
+print(orderData,aqiList);
 console.log(orderData);
 //console.log(typeof aqiData[1][1]);
 
@@ -36,8 +37,7 @@ function orderAndFilter(usualData,min){           //过滤小于60的数据，�
     return orderData;
 }
 
-function print(printData){     //利用DocumentFragment()一次性添加到文档中，减少回流和重绘
-    var aqiList=document.getElementById("aqi-list");
+function print(printData,list){     //利用DocumentFragment()一次性添加到文档中，减少回流和重绘
     var fragment=document.createDocumentFragment();
     for(var i=0;i<printData.length;i++){
         var spanNode=document.createElement("li");
@@ -47,7 +47,7 @@ function print(printData){     //利用DocumentFragment()一次性添加到文�
         fragment.appendChild(spanNode);
     }
     console.log(fragment);
-    aqiList.appendChild(fragment);
+    list.appendChild(fragment);
 }
 
 
