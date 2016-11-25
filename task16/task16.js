@@ -29,7 +29,7 @@ function addAqiData() {
         aqiCityInput=aqiCityInput.trim();
         aqiValueInput=aqiValueInput.trim();
         console.log(aqiCityInput.length);
-        aqiData[aqiCityInput]=aqiValueInput;  //使用对象代替二维数组的好处在于可以避免去重操作，因为对象里属性为一
+        aqiData[aqiCityInput]=aqiValueInput;  //使用对象代替二维数组的好处在于可以避免去重操作，因为对象里属性唯一
         console.log(aqiData);
     }
     renderAqiList(aqiData);  //使用这个函数时记得带参数。。。
@@ -72,11 +72,16 @@ function addBtnHandle() {
     addAqiData();              //渲染函数在addAqiData合理之后才执行，所以放到它里面
 }
 
-function delBtnHandle(event) {          //给删除按钮的父元素table绑定了点击事件，点击删除按钮时，点击按钮事件冒泡到它的父元素上，委托父元素代它执行
-    if(event.target.nodeName=="BUTTON"){   //必须判断点击的元素类型，否则table的子元素都会执行这个点击事件
+function delBtnHandle(event) {                                //给删除按钮的父元素table绑定了点击事件，点击删除按钮时，点击按钮事件冒泡到它的父元素上，委托父元素代它执行
+    if(event.target.nodeName=="BUTTON"){                                  //必须判断点击的元素类型，否则table的子元素都会执行这个点击事件
         var city=event.target.parentNode.parentNode.firstChild.innerText;
-        delete aqiData[city];    //delete如果是删除数组，可能会使数组变成稀疏数组，好处是元素对应的键值没变，被删除的那个位置会变为undefined,但对这种数组进行搜索时速度不变。
-                                 //不过是删除对象，不用考虑这个问题
+        delete aqiData[city];                  //delete如果是删除数组，可能会使数组变成稀疏数组，好处是元素对应的键值没变，被删除的那个位置会变为undefined,但对这种数组进行搜索时速度不变。
+        if(Object.getOwnPropertyNames(aqiData).length===0){     //在所有数据都删除时，清空table的内容（就是把表头也去掉）
+            var aqiTable=document.getElementById("aqi-table");
+            aqiTable.removeChild(aqiTable.firstChild);
+            console.log(aqiTable.innerHTML);
+            return false;
+        }                                     //不过是删除对象，不用考虑这个问题
           renderAqiList(aqiData);
     }
 }
