@@ -87,7 +87,7 @@ input[type="radio"]{
     border: 0;
     background-clip: padding-box;
     box-shadow: 1px 1px 5px gray;
-    transition: all 0.3s;
+    transition: all 0.4s;
 }
 
 #city-select option{
@@ -123,6 +123,7 @@ input[type="radio"]{
 }
 
 .aqi-chart-figure{
+    /*overflow: auto;*/
     min-width:96%;
     position: relative;
     width: 100%;
