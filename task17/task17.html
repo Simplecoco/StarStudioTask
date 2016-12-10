@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>task17</title>
+    <link rel="stylesheet" href="task17.css" type="text/css" charset="UTF-8" sizes="">
+</head>
+<body>
+<main>
+<fieldset id="form-gra-time">
+    <div class="legend"><span>日期粒度</span></div>
+    <input name="gra-time" value="day" type="radio" id="day"><label for="day">day</label>
+    <input name="gra-time" value="week" type="radio" id="week" checked="checked"><label for="week">week</label>
+    <input name="gra-time" value="month" type="radio" id="month"><label for="month">month</label>
+</fieldset>
+
+<fieldset id="form-gra-city">
+    <div class="legend"><span>城市</span></div>
+    <select id="city-select">
+    </select>
+</fieldset>
+
+<div class="aqi-chart-wrap">
+    <div class="aqi-chart-figure">
+        <div class="boxWrap"></div>
+    </div>
+    <div class="title"></div>
+</div>
+
+</main>
+
+<script src="task17.js" type="text/javascript" charset="UTF-8"></script>
+</body>
+</html>

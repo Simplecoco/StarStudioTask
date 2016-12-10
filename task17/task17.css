@@ -1,0 +1,194 @@
+*{
+    font-family: Microsoft JhengHei;
+}
+
+body,html{
+    min-width: 1300px;
+    min-height: 550px;
+    margin: 0;
+    background: linear-gradient(150deg,#5cacee 20%,#104ebb 90%);
+    height: 100%;
+}
+
+main{
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.legend{
+    margin: -2.5em 0 0.2em;
+    background: #ff6a6a;
+    width: 5em;
+    height: 5em;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 5em;
+    padding: 0 0.5em;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px gray;
+
+}
+
+fieldset{
+    display: inline-block;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 3px gray;
+    width: 47.5%;
+    height: 7em;
+    padding: 10px;
+    margin:2.5em 0 2em;
+    border: 0;
+    background:white;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#form-gra-time label{
+    color: white;
+    font-size:16px ;
+    display: inline-block;
+    height: 2em;
+    width: 5em;
+    padding: 1em auto;
+    text-align: center;
+    line-height: 2em;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom,#98fb98 10%,#00ff7f 90%);
+    font-family: "Microsoft Yahei";
+    border-radius: 5px;
+    margin: 0.5em 0.5em 0;
+    box-shadow: 0 0 5px gray;
+    transition: all 0.4s;
+}
+
+
+#form-gra-time{
+    margin-right: 4.6%;
+ }
+
+input[type="radio"]{
+    position: absolute;
+    clip: rect(0,0,0,0);
+}
+
+#city-select{
+    font-family: "Microsoft Yahei";
+    position: relative;
+    color: white;
+    font-size: 20px;
+    box-sizing: border-box;
+    height: 2em;
+    padding:0 1.5em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: linear-gradient(to top,#98fb98 10%,#00ff7f 90%);
+    border: 0;
+    background-clip: padding-box;
+    box-shadow: 1px 1px 5px gray;
+    transition: all 0.3s;
+}
+
+#city-select option{
+    display: block;
+    color: #757575;
+}
+
+#city-select:hover,#city-select:active{
+    background: linear-gradient(to bottom,#5cacee 10%,#aeeeee 90%);
+    box-shadow: 1px 1px 10px gray;
+}
+
+#form-gra-time input[type="radio"]:hover+label{
+    background: linear-gradient(to top,#5cacee 10%,#aeeeee 90%);
+    box-shadow: 1px 1px 10px gray;
+}
+
+
+#form-gra-time input[type="radio"]:active+label,
+#form-gra-time input[type="radio"]:checked+label{
+    background: linear-gradient(to top,#4f94cd 10%,#aeeeee 90%);
+    box-shadow:inset 1px 1px 10px gray;
+}
+
+.aqi-chart-wrap{
+    min-width: 90%;
+    box-sizing: border-box;
+    height: calc(100% - 14em);
+    box-shadow: 1px 1px 3px gray;
+    background: white;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+.aqi-chart-figure{
+    min-width:96%;
+    position: relative;
+    width: 100%;
+    height: 93%;
+    box-shadow: inset 0 0 10px gray;
+    border-radius: 5px;
+    text-align: center;
+    background: #fffff0;
+}
+
+.boxWrap{
+    position: absolute;
+    display: block;
+    white-space: nowrap;  /*防止柱形图换行*/
+    width: 100%;
+    bottom: 0;
+}
+
+.boxWrap div{
+    position: relative;
+    display: inline-block;
+    box-shadow: 0 0 3px gray;
+    transform: scale(1,0);
+    transition: transform 0.4s ease-out;
+}
+
+.boxWrap div div{
+    height: 100%;
+    width: 100%;
+}
+
+.boxWrap div div:hover + span{
+    display: block;
+}
+
+.boxWrap div span{
+    display: block;
+    color: black;
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    background: springgreen;
+    box-shadow: 0 0 8px gray;
+    opacity: 0.6;
+    border-radius: 5px;
+    top: -3em;
+    transform: scale(0);
+    transition: transform 0.15s ease-out;
+}
+
+.boxWrap div span::before{
+    position: absolute;
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    right: 1%;
+    bottom: -9px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid springgreen;
+}
+
+.title{
+    text-align: center;
+    width: 100%;
+    line-height: 3em;
+    font-size: 18px;
+}
