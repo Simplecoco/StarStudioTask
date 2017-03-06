@@ -25,7 +25,7 @@
             description: "密码",
             regexp: /^(?!^\d+$)(?!^[a-zA-Z]+$)(\S{6,22})$/,         //不能纯数字，纯字母，并且是没有空格的密码
             tip: "密码须为6-22位无空格的字符的组合，且不能只为同一种类型哦",
-            get index (){                                                   //自动获取位置
+            get index() {                                                   //自动获取位置
                 return Object.keys(rule).indexOf(this.id) + 1;
             },
             get dom() {
@@ -40,7 +40,7 @@
             regexp: /^(?!^\d+$)(?!^[a-zA-Z]+$)(.{6,22})$/,     //同理
             tip: "密码格式错误。",
             tip_b: "两次密码不一样哦。",
-            get index (){                                                   //自动获取位置
+            get index() {                                                   //自动获取位置
                 return Object.keys(rule).indexOf(this.id) + 1;
             },
             get dom() {
@@ -55,7 +55,7 @@
             description: "手机号码",
             regexp: /^1((3[0-9])|(4[57])|(5[0-35-9])|(7[36-8])|(8[0-9]))[0-9]{8}$/,
             tip: "请输入正确的11位号码哦",
-            get index (){                                                   //自动获取位置
+            get index() {                                                   //自动获取位置
                 return Object.keys(rule).indexOf(this.id) + 1;
             },
             get dom() {
@@ -70,7 +70,7 @@
             regexp: /^(?!^_+$)([\w_]){1,18}@\w{1,10}\.com$/,  //不能纯下划线
             tip: "请输入正确的邮箱地址xxx@xxx.com",
             emailAutoFillData:["@163.com", "@126.com", "@qq.com", "@outlook.com", "@gmail.com"],
-            get index (){                                                   //自动获取位置
+            get index() {                                                   //自动获取位置
                 return Object.keys(rule).indexOf(this.id) + 1;
             },
             get dom() {
@@ -99,10 +99,6 @@
             var value = this.value;
             var regexp = that.regexp;
 
-            if(Object.keys(rule.bingoValueGroup).length == Object.keys(rule).length - 1){
-                dom.removeEventListener("keyup", test);
-                dom.addEventListener("keyup", test);                                 //回调了
-            }
             if (parseInt(that.index) - 1 <= index && !rule.email.mark) {           //有前后矛盾，所以加了一个标记。还有就是当前正确值为当前序号减一时才会执行判断操作
 
                 if (value == "") {
