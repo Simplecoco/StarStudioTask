@@ -2,6 +2,9 @@
  * Created by 辛珀 on 2017/2/14.
  */
 
+//主要修改了，redTip和greenTip,将结构简化明了，还有就是对象自动获取位置，将模拟失焦改为显示绑定等，以及一些细节的按钮未启用版,还有如果添加新对象的话，
+//对象名字要和id相同，因为后面通过that.id找对象，如果知道了什么获取对象名的方法可以解决这个问题。
+
 (function(){
     var rule = {
         userName: {
@@ -9,8 +12,13 @@
             description: "用户名",
             regexp: /^(?!^_+$)(?!^\d+$)([\u4E00-\u9FA5\uF900-\uFA2D\w_]){1,18}$/,  //不能纯数字，不能纯下划线
             tip: "用户名只能为数字，字母，下划线的组合，还不能有空格哦。",
-            index: 1,                                            //可以改一下，自动获取位置，用get或set
-            dom: defineAndBind
+            get index() {                                                   //自动获取位置
+                return Object.keys(rule).indexOf(this.id) + 1;
+            },
+            get dom() {
+                return document.getElementById(this.id);
+            },
+            bind:defineAndBind
         },
 
         password: {
@@ -18,8 +26,13 @@
             description: "密码",
             regexp: /^(?!^\d+$)(?!^[a-zA-Z]+$)(\S{6,22})$/,         //不能纯数字，纯字母，并且是没有空格的密码
             tip: "密码须为6-22位无空格的字符的组合，且不能只为同一种类型哦",
-            index: 2,
-            dom: defineAndBind
+            get index() {                                                   //自动获取位置
+                return Object.keys(rule).indexOf(this.id) + 1;
+            },
+            get dom() {
+                return document.getElementById(this.id);
+            },
+            bind:defineAndBind
         },
 
         confirmPassword: {
@@ -28,8 +41,13 @@
             regexp: /^(?!^\d+$)(?!^[a-zA-Z]+$)(.{6,22})$/,     //同理
             tip: "密码格式错误。",
             tip_b: "两次密码不一样哦。",
-            index: 3,
-            dom: defineAndBind
+            get index() {                                                   //自动获取位置
+                return Object.keys(rule).indexOf(this.id) + 1;
+            },
+            get dom() {
+                return document.getElementById(this.id);
+            },
+            bind:defineAndBind
         },
 
 
@@ -38,18 +56,42 @@
             description: "手机号码",
             regexp: /^1((3[0-9])|(4[57])|(5[0-35-9])|(7[36-8])|(8[0-9]))[0-9]{8}$/,
             tip: "请输入正确的11位号码哦",
-            index: 4,
-            dom: defineAndBind
+            get index() {                                                   //自动获取位置
+                return Object.keys(rule).indexOf(this.id) + 1;
+            },
+            get dom() {
+                return document.getElementById(this.id);
+            },
+            bind:defineAndBind
         },
+
+        //studentId: {
+        //    id:"studentId",
+        //    description:"学号",
+        //    regexp:/^\d{13}$/,
+        //    tip:"请输入正确的13位学号",
+        //    get index() {                                                   //自动获取位置
+        //        return Object.keys(rule).indexOf(this.id) + 1;
+        //    },
+        //    get dom() {
+        //        return document.getElementById(this.id);
+        //    },
+        //    bind:defineAndBind
+        //},
 
         email: {
             id: "email",
             description: "邮箱",
             regexp: /^(?!^_+$)([\w_]){1,18}@\w{1,10}\.com$/,  //不能纯下划线
             tip: "请输入正确的邮箱地址xxx@xxx.com",
-            index: 5,
             emailAutoFillData:["@163.com", "@126.com", "@qq.com", "@outlook.com", "@gmail.com"],
-            dom: defineAndBind
+            get index() {                                                   //自动获取位置
+                return Object.keys(rule).indexOf(this.id) + 1;
+            },
+            get dom() {
+                return document.getElementById(this.id);
+            },
+            bind:defineAndBind
         },
 
         bingoValueGroup: {}
@@ -57,37 +99,21 @@
 
     function defineAndBind() {
         var that = this;                                                //这里可以问两个问题，引用类型的深浅复制，以及this的指向
-        var dom = document.getElementById(this.id);
+        var dom = this.dom;
         var tip = dom.nextSibling.nextSibling;
         var validTip = tip.nextSibling.nextSibling;
         dom.addEventListener("blur", test);
-        Object.defineProperty(rule, "bingoValueGroup", {enumerable: false});   //防止之后之后调用keys遍历出
 
         if (this.id === "email") {
             dom.addEventListener("keyup", emailAutoFill);     //对于email，还要多绑一个keyup事件
         }
-        //else {
-        //    dom.addEventListener("blur", test);
-        //}
 
         function test() {
             var index = Object.keys(rule.bingoValueGroup).length;
             var value = this.value;
-            //var tip = this.nextSibling.nextSibling;
-            //var validTip = tip.nextSibling.nextSibling;
             var regexp = that.regexp;
 
-            if(Object.keys(rule.bingoValueGroup).length == Object.keys(rule).length - 1){
-                dom.removeEventListener("keyup", test);
-                dom.addEventListener("keyup", test);                                 //回调了
-            }
-
             if (parseInt(that.index) - 1 <= index && !rule.email.mark) {           //有前后矛盾，所以加了一个标记。还有就是当前正确值为当前序号减一时才会执行判断操作
-                //validTip.style.transition = "transform 0.2s";
-                //validTip.style.transform = "scale(0)";
-                //tip.style.transition = "transform 0.2s 0.2s";
-                //tip.style.transform = "rotateX(0)";
-                //delete rule.bingoValueGroup[that.id];
 
                 if (value == "") {
                     tip.innerText = that.description + "不能为空哦。";
@@ -105,32 +131,13 @@
                     return false;
                 }
                 else {
-                    //that.bingoValue = this.value;
-                    //rule.bingoValueGroup[that.id] = that.bingoValue;
                     greenTip();
-                    //var form = document.getElementsByClassName("register")[0];
-                    //var next=parseInt(rule[that.id].index);
-                    //var field=form.elements[1];
-                    //console.log(typeof next);
-
-                    //if(form.elements[next].nodeName!=="button"){
-                    //    form.elements[next].focus();
-                    //}
-
-
-                    //tip.style.transform = "rotateX(-90deg)";
-                    //tip.style.background="rgba(238,44,44,0.6)";
-                    //validTip.style.transition = "transform 0.2s 0.2s";
-                    //validTip.style.transform = "scale(1)";
                 }
                 signIn();                 //每次测试完都验证一下
             }
         }
 
         function emailAutoFill() {
-            //var tip = this.nextSibling.nextSibling;
-            //var validTip = tip.nextSibling.nextSibling;
-            //var inputBox = this;
             var regexp = /^.+@(.*)$/;
 
             if (regexp.test(this.value)) {                                 //测试已经超出自动填充范围。。。然后就关闭填充框，这里待完善
@@ -139,10 +146,6 @@
 
                 dom.addEventListener("keyup", function () {             //手动输入完以后还要验证下
                     if (that.regexp.test(dom.value)) {
-                        //that.bingoValue = dom.value;
-                        //rule.bingoValueGroup[that.id] = that.bingoValue;
-                        //validTip.style.transition = "transform 0.2s 0.2s";
-                        //validTip.style.transform = "scale(1)";
                         greenTip();
                         signIn();
                     }
@@ -174,39 +177,23 @@
                 if (event.target.nodeName === "LI") {
                     var e = event.target;
                     dom.value = e.innerText;
-
-                    //tip.style.background="rgba(238,44,44,0.6)";
-
-                    //that.bingoValue = dom.value;
-                    //rule.bingoValueGroup[that.id] = that.bingoValue;
-                    //tip.style.transition = "transform 0.2s";
-                    //tip.style.transform = "rotateX(-90deg)";
-                    //validTip.style.transition = "transform 0.2s 0.2s";
-                    //validTip.style.transform = "scale(1)";
                     greenTip();
-                    //dom.removeEventListener("keyup", emailAutoFill);
                     delete rule.email.mark;                    //标记
                     signIn();
                 }
             }
         }
 
-        function redTip(){
-            //var tip = that.nextSibling.nextSibling;
-            //var validTip = tip.nextSibling.nextSibling;
+        function redTip() {
             delete that.bingoValue;
             delete rule.bingoValueGroup[that.id];
-
             validTip.style.transition = "transform 0.2s";
             validTip.style.transform = "scale(0)";
             tip.style.background="rgba(238,44,44,0.6)";
             tip.style.transition = "transform 0.2s 0.2s";
             tip.style.transform = "rotateX(0)";
         }
-        function greenTip(){
-            //var tip = that.nextSibling.nextSibling;
-            //var validTip = tip.nextSibling.nextSibling;
-
+        function greenTip() {
             that.bingoValue = dom.value;
             rule.bingoValueGroup[that.id] = that.bingoValue;
             tip.style.transition = "transform 0.2s";
@@ -215,31 +202,17 @@
             validTip.style.transform = "scale(1)";
         }
 
-
         return {dom: dom, test: test};     //return出去，以便点击注册按钮再次验证时调用
     }
 
     function signIn() {
-        Object.defineProperty(rule, "bingoValueGroup", {enumerable: false});   //之后调用keys不遍历出
-
-        //if (Object.keys(rule.bingoValueGroup).length == Object.keys(rule).length) {
-            var signIn = document.getElementById("signIn");
-            //signIn.className = "validBt";
-            //signIn.disabled = false;
-            signIn.addEventListener("click", finalVerify);
-        //}
+        var signIn = document.getElementById("signIn");
+        signIn.addEventListener("click", finalVerify);
 
         function finalVerify() {
-            //signIn.innerText = "Sign in";
-
             for (var i = 0; i < Object.keys(rule).length; i++) {
-                var o = rule[Object.keys(rule)[i]].dom();
-
-                //o.dom.addEventListener("blur", o.test);
-                //o.dom.blur();                                        //模拟发生失焦事件
-
+                var o = rule[Object.keys(rule)[i]].bind();
                 o.test.apply(o.dom);
-
             }
             if (Object.keys(rule.bingoValueGroup).length === Object.keys(rule).length) {      //当正确值足够时提交
                 signIn.innerText = "Loading...";
@@ -251,11 +224,10 @@
     }
 
     function bindDom() {
-        rule.userName.dom();
-        rule.password.dom();
-        rule.confirmPassword.dom();
-        rule.mobile.dom();
-        rule.email.dom();
+        Object.defineProperty(rule, "bingoValueGroup", {enumerable: false});   //防止之后之后调用keys遍历出
+        for(var i=0;i<Object.keys(rule).length;i++){
+            rule[Object.keys(rule)[i]].bind();
+        }
     }
 
     bindDom();

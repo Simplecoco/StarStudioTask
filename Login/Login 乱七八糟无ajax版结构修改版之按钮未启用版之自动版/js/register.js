@@ -83,7 +83,7 @@
     };
 
     function defineAndBind() {
-        var that = this;                                                //这里可以问两个问题，引用类型的深浅复制，以及this的指向
+        var that = this;                                         //这里可以问两个问题，引用类型的深浅复制，以及this的指向
         var dom=this.dom;
         var tip = dom.nextSibling.nextSibling;
         var validTip = tip.nextSibling.nextSibling;

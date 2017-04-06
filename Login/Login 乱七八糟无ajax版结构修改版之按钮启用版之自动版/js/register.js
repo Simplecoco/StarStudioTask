@@ -7,8 +7,8 @@
 
 (function(){
     var rule = {
-        userName: {
-            id: "userName",
+        id: {
+            id: "id",
             description: "用户名",
             regexp: /^(?!^_+$)(?!^\d+$)([\u4E00-\u9FA5\uF900-\uFA2D\w_]){1,18}$/,  //不能纯数字，不能纯下划线
             tip: "用户名只能为数字，字母，下划线的组合，还不能有空格哦。",
@@ -51,8 +51,8 @@
         },
 
 
-        mobile: {
-            id: "mobile",
+        telephone: {
+            id: "telephone",
             description: "手机号码",
             regexp: /^1((3[0-9])|(4[57])|(5[0-35-9])|(7[36-8])|(8[0-9]))[0-9]{8}$/,
             tip: "请输入正确的11位号码哦",
@@ -98,7 +98,7 @@
     };
 
     function defineAndBind() {
-        var that = this;                                                //这里可以问两个问题，引用类型的深浅复制，以及this的指向
+        var that = this;                            //这里可以问两个问题，引用类型的深浅复制，以及this的指向
         var dom = this.dom;
         var tip = dom.nextSibling.nextSibling;
         var validTip = tip.nextSibling.nextSibling;
@@ -131,9 +131,14 @@
                     return false;
                 }
                 else {
-                    greenTip();
+                    if(that.id === "id"){
+                        isExist();
+                    }
+                    else {
+                        greenTip();
+                        //signIn();                 //每次测试完都验证一下
+                    }
                 }
-                signIn();                 //每次测试完都验证一下
             }
         }
 
@@ -147,7 +152,7 @@
                 dom.addEventListener("keyup", function () {             //手动输入完以后还要验证下
                     if (that.regexp.test(dom.value)) {
                         greenTip();
-                        signIn();
+                        //signIn();
                     }
                 });
                 return false;
@@ -179,12 +184,12 @@
                     dom.value = e.innerText;
                     greenTip();
                     delete rule.email.mark;                    //标记
-                    signIn();
+                    //signIn();
                 }
             }
         }
 
-        function redTip() {
+        function redTip() {                           //删除之前的正确值并显示错误提示
             delete that.bingoValue;
             delete rule.bingoValueGroup[that.id];
             validTip.style.transition = "transform 0.2s";
@@ -193,7 +198,7 @@
             tip.style.transition = "transform 0.2s 0.2s";
             tip.style.transform = "rotateX(0)";
         }
-        function greenTip() {
+        function greenTip() {                                    //保存正确值并显示logo
             that.bingoValue = dom.value;
             rule.bingoValueGroup[that.id] = that.bingoValue;
             tip.style.transition = "transform 0.2s";
@@ -202,7 +207,36 @@
             validTip.style.transform = "scale(1)";
         }
 
-        return {dom: dom, test: test};     //return出去，以便点击注册按钮再次验证时调用
+        function isExist(){
+            //ajax验重
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+                        var message=JSON.parse(xhr.response);
+                        if(message.errorCode == "0"){
+                            greenTip();
+                        }
+                        else if(message.errorCode == "1"){
+                            tip.innerText = message.errorMessage;
+                            redTip();
+                            return false;
+                        }
+                    }
+                    else{
+                        tip.innerText = "请求不成功";
+                        redTip();
+                        return false;
+                    }
+                }
+            };
+            xhr.open("post","http://www.jinsong.online/ci_api/index.php/admin/id_only",true);
+            var form=new FormData();
+            form.append(that.id,dom.value);
+            xhr.send(form);
+        }
+
+        return {dom: dom, test: test};     //return出去，以便点击注册按钮再次验证时调用，防止用户第一次输入成功，然后又进行修改
     }
 
     function signIn() {
@@ -216,9 +250,37 @@
             }
             if (Object.keys(rule.bingoValueGroup).length === Object.keys(rule).length) {      //当正确值足够时提交
                 signIn.innerText = "Loading...";
+                signIn.className ="invalidBt";
                 signIn.disabled = "disabled";
-                var form = document.getElementsByClassName("register")[0];
-                form.submit();
+                //var form = document.getElementsByClassName("register")[0];
+                //form.submit();
+                var xhr=new XMLHttpRequest();
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState == 4){
+                        if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                            var message = JSON.parse(xhr.response);
+                            console.log(message);
+                            if (message.errorCode == "0") {
+                                signIn.innerText = "注册成功";
+                            }
+                            else if (message.errorCode == "1") {
+                                signIn.innerText = message.errorMessage;
+                                //redTip();
+                                return false;
+                            }
+                            else {
+                                signIn.innerText = "请求失败";
+                            }
+                        }
+                    }
+                };
+                xhr.open("post","http://www.jinsong.online/ci_api/index.php/admin/registration",true);
+                delete rule.bingoValueGroup["confirmPassword"];
+                var form=new FormData(rule.bingoValueGroup);
+                for(var j=0;j<Object.keys(rule.bingoValueGroup).length;j++){
+                    form.append(Object.keys(rule.bingoValueGroup)[j],rule.bingoValueGroup[Object.keys(rule.bingoValueGroup)[j]]);
+                }
+                xhr.send(form);
             }
         }
     }
@@ -228,6 +290,7 @@
         for(var i=0;i<Object.keys(rule).length;i++){
             rule[Object.keys(rule)[i]].bind();
         }
+        signIn();
     }
 
     bindDom();

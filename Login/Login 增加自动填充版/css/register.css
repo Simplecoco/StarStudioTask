@@ -7,17 +7,29 @@ html{
 }
 
 body{
+    /*margin: 0;*/
     background: url("picture/baymax.jpg") 0/cover fixed;
     height: 100%;
+    /*height: 1200px;*/
+    /*width: 100%;*/
+    /*filter:brightness(.9);*/
+    /*width: 100%;*/
     box-sizing: border-box;
     margin: 0;
     padding-top: 8em;
+    /*overflow: hidden;*/
+    /*margin:-5em 0 0;*/
+    /*overflow: hidden;*/
 }
 
 .register{
     position: relative;
     width: 670px;
+    /*height: auto;*/
     margin: 0 auto;
+    /*transform: translate(50%,50%);*/
+    /*background: white;*/
+    /*display: inline-block;*/
     padding: 1em;
     box-shadow: 3px 3px 6px 0 #171717;
     border: 16px solid transparent;
@@ -25,10 +37,15 @@ body{
     background-size: cover;
     background-clip: padding-box,border-box;
     background-origin: border-box;
+    /*background: hsla(0,0%,100%,.3);*/
     border-radius: 20px;
+    /*opacity: 0.7;*/
     box-sizing: border-box;
+    /*font-weight: bold;*/
     z-index: 3;
+    /*overflow: hidden;*/
     color: gainsboro;
+    /*filter: blur(50px);*/
     text-align: center;
 }
 
@@ -41,8 +58,12 @@ body{
     bottom: 0;
     filter: blur(20px);
     background: url("picture/baymax.jpg") 0/cover fixed;
+    /*background: transparent;*/
+    /*background: red;*/
+    /*/!*opacity: 0.5;*!/*/
     z-index: -2;
     margin: -10px;
+    /*box-sizing: content-box;*/
 }
 
 .register ul{
@@ -55,19 +76,21 @@ body{
     list-style: none;
     margin-bottom: 1.6em;
     white-space: nowrap;
-    color: rgba(238,44,44);
 }
 
 .register ul li label{
     text-align: right;
+    /*height: 100%;*/
     display: inline-block;
     min-width: 150px;
     margin-right: 4em;
+    /*vertical-align: sub;*/
 }
 
 .register ul li input{
     outline:none;
     border-color:transparent transparent gainsboro transparent;
+    /*box-shadow:inset 0 -2px 2px 0 gainsboro;*/
     background:inherit;
     border-width:0 0 2px 0;
     font-size: 16px;
@@ -93,25 +116,40 @@ body{
 
 .register ul li .tip{
     position: absolute;
+    /*display: none;*/
     display: block;
     right: 0;
+    /*display: inline-block;*/
     width: 100%;
     margin: 0.2em 0 0;
     font-family:YouYuan;
     font-size: 12px;
+    /*color: red;*/
+    /*word-break:keep-all;*/
     white-space: normal;
     word-break: break-all;
+    /*position: absolute;*/
     z-index: 5;
+    /*display: inline-block;*/
     overflow: visible;
     background: rgba(238,44,44,0.6);
+    /*border: 1px solid gainsboro;*/
     box-shadow: 0 0 5px 0 black;
     border-radius: 5px;
+    /*line-height: 0.3em;*/
     padding: 0.5em 1em;
     box-sizing: border-box;
     line-height: 1em;
     transform: rotateX(-90deg);
     transition:width 0.2s, transform 0.2s,border-radius 0.2s 0.2s;
+    /*text-align: center;*/
     transform-origin: top;
+    /*transition: opacity 0.3s;*/
+    /*opacity: 0;*/
+}
+
+.register ul li #email-tip{
+    background: linear-gradient(130deg,rgba(10,110,255,0.8),rgba(8,10,255,0.8));
 }
 
 .register ul li .tip li{
@@ -126,54 +164,80 @@ body{
 }
 
 .register ul li .tip li:hover {
+    /*box-shadow: 0 0 3px 0 black;*/
     background:rgba(10,110,255,0.8);
 }
 
 .register ul li .valid-tip{
     position: absolute;
+    /*display: none;*/
     display: block;
     right: 0;
     top: 0;
     width: 1.5em;
     line-height: 1.5em;
+    /*margin: 0.2em 0 0;*/
     font-family:YouYuan;
     font-size: 12px;
     color: gainsboro;
+    /*word-break:keep-all;*/
     transform:scale(0);
+    /*white-space: normal;*/
+    /*word-break: break-all;*/
     font-weight: bold;
+    /*position: absolute;*/
     padding: 0;
     z-index: 5;
     margin-right: 1em;
+    /*display: inline-block;*/
+    /*overflow: visible;*/
     background:rgba(118,238,0,0.5);
+    /*border: 1px solid gainsboro;*/
     box-shadow: 0 0 5px 0 #3b3b3b;
     border-radius: 50%;
+    /*line-height: 0.3em;*/
+    /*padding: 0.3em 1em;*/
+    /*box-sizing: border-box;*/
+    /*transform: rotateX(-90deg);*/
+    /*transform: scale(0);*/
     transition:transform 0.2s 0.2s;
     text-align: center;
     font-style: normal;
+    /*transition: opacity 0.3s;*/
+    /*opacity: 0;*/
 }
 
 .register .invalidBt{
+    /*text-align: center;*/
     background: rgba(255,255,255,.2);
     width: 100%;
+    /*float: right;*/
     display: inline-block;
     padding: .5em 2em;
     border: none;
+    /*box-shadow: 1px 1px 3px 0 black;*/
+    /*min-width: min-content;*/
     transition: background 0.4s;
     border-radius: 5px;
     box-sizing: border-box;
+    /*cursor: pointer;*/
     color: gray;
     outline:none;
     font-size: 18px;
     font-weight: bold;
+    /*z-index: 3;*/
 }
 
 .register .validBt{
+    /*text-align: center;*/
     background: rgba(255,255,255,.2);
     width: 100%;
+    /*float: right;*/
     display: inline-block;
     padding: .5em 2em;
     border: none;
     box-shadow: 1px 1px 5px 0 black;
+    /*min-width: min-content;*/
     transition: background 0.4s;
     border-radius: 5px;
     cursor: pointer;
@@ -181,13 +245,34 @@ body{
     font-size: 18px;
     font-weight: bold;
     box-sizing: border-box;
+    /*z-index: 3;*/
 }
 
 .register .validBt:focus{
+    /*box-shadow: 4px 4px 7px 0 gray;*/
     background:gainsboro;
 
 }
 
 .register .validBt:hover{
+    /*box-shadow: 4px 4px 7px 0 gray;*/
     background: gainsboro;
 }
+
+/*.register .tip{*/
+
+/*}*/
+
+/*.register button:active{*/
+    /*background: black;*/
+/*}*/
+
+/*dt{*/
+    /*margin: 20px;*/
+    /*position: absolute;*/
+/*}*/
+
+/*dd{*/
+    /*margin: 10px;*/
+    /*margin-left: 10em;*/
+/*}*/

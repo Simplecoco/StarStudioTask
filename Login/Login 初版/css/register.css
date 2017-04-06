@@ -1,0 +1,30 @@
+*{
+    font-family: Microsoft JhengHei ;
+}
+
+
+.register{
+    position: relative;
+}
+
+input{
+    outline:none;
+    border-color:transparent transparent gainsboro transparent;
+    /*box-shadow:inset 0 -2px 2px 0 gainsboro;*/
+    border-width:0 0 2px 0;
+    font-size: 16px;
+}
+
+input:focus{
+    border-color:transparent transparent dodgerblue transparent;
+}
+
+dt{
+    /*margin: 20px;*/
+    position: absolute;
+}
+
+dd{
+    /*margin: 10px;*/
+    margin-left: 10em;
+}
