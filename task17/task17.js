@@ -262,23 +262,20 @@ function initCitySelector(selectedCity) {
         fragment.appendChild(cityOption);
 
     }// 读取aqiSourceData中的城市，然后设置id为city-select的下拉列表中的选项
+
     citySelect.appendChild(fragment);
     pageState.nowSelectCity=citySelect.value;//添加默认城市状态
-
-    citySelect.addEventListener("click",cityChange,false);   //试了一下addEventListener
+    citySelect.addEventListener("change",cityChange,false);
 
     function cityChange() {
-        if(citySelect.value==pageState.nowSelectCity){
-            return false;
-        }
-        else{
-            pageState.nowSelectCity=citySelect.value;
-
-        }
+            if(citySelect.value == pageState.nowSelectCity){
+                return false;
+            }
+            else{
+                pageState.nowSelectCity=citySelect.value;
+            }
         graTimeAndCityChange();
     }
-
-
 }
 
 /**

@@ -30,11 +30,16 @@ main{
 
 }
 
+.fieldset-container{
+    display: flex;
+}
+
 fieldset{
-    display: inline-block;
+    flex: 1;
+    /*display: inline-block;*/
     box-sizing: border-box;
     box-shadow: 1px 1px 3px gray;
-    width: 47.5%;
+    /*width: 47.5%;*/
     height: 7em;
     padding: 10px;
     margin:2.5em 0 2em;
