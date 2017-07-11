@@ -108,14 +108,19 @@ function renderChart() {
         box.style.marginLeft=chartData.boxMargin + "px";
         box.style.marginRight=chartData.boxMargin + "px";
         box.style.background=someColor[Math.round(Math.random()*(someColor.length-1))]; //随机取色
-        hint.innerText=chartData["date"][i]+" : "+Math.round(textData[i]);
 
         switch(pageState.nowGraTime){
-            case "day": title.innerText=pageState.nowSelectCity+" 1~3月 每日空气质量指数";
+            case "day":
+                title.innerText=pageState.nowSelectCity+" 1~3月 每日空气质量指数";
+                hint.innerText=chartData["date"][i]+" : "+Math.round(textData[i]);
                 break;
-            case "week": title.innerText=pageState.nowSelectCity+" 1~3月 每周空气质量指数";
+            case "week":
+                title.innerText=pageState.nowSelectCity+" 1~3月 每周空气质量指数";
+                hint.innerText="第" + parseInt(i+1) + "周" + " : "+Math.round(textData[i]);
                 break;
-            case "month":  title.innerText=pageState.nowSelectCity+" 1~3月 每月空气质量指数";
+            case "month":
+                title.innerText=pageState.nowSelectCity+" 1~3月 每月空气质量指数";
+                hint.innerText= parseInt(i+1) + "月" +" : "+Math.round(textData[i]);
         }
 
         if(Math.round(textData[i])>200){      //设置提示的字体颜色
@@ -201,11 +206,6 @@ function graTimeAndCityChange() {               // 确定是否选项发生了�
                 var firstMonthDays=dayData["dataArray"].slice(0,firstMonthDaysNumber); //结束点是结束元素的后一个序号
                 var secondMonthDays=dayData["dataArray"].slice(firstMonthDaysNumber,firstMonthDaysNumber+secondMonthDaysNumber);
                 var thirdMonthDays=dayData["dataArray"].slice(firstMonthDaysNumber+secondMonthDaysNumber,firstMonthDaysNumber+secondMonthDaysNumber+thirdMonthDaysNumber);
-
-            //    firstMonthDays.prototype.monthAverage=monthAverage();         //这个方法不行吗，可能还没领会this的意思
-            //function monthAverage(){
-            //       return (this.reduce(function(x,y){return x+y}))/this.length;
-            //    }
 
                 var firstMonthAverage=firstMonthDays.reduce(function(x,y){return x+y;})/firstMonthDays.length;
                 var secondMonthAverage=secondMonthDays.reduce(function(x,y){return x+y;})/secondMonthDays.length;
